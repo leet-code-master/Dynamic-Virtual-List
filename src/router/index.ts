@@ -18,6 +18,11 @@ const router = createRouter({
       path: '/list',
       name: 'DynamicVirtualList',
       component: DynamicVirtualList
+    },
+    {
+      path: '/flex',
+      name: 'Flex',
+      component: () => import('@/components/MyFlex/index.vue')
     }
   ]
 })
