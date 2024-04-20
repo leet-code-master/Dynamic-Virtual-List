@@ -10,8 +10,8 @@
 import { defineComponent, ref } from 'vue'
 import DynamicVirtualList from '../DynamicVirtualList/index.vue'
 
-import { SESSION_DATA } from '@/const/index.ts'
-import type { SESSION_DATA_TYPE } from '@/const/index.ts'
+import { SESSION_DATA } from '@/const/index'
+import type { SESSION_DATA_TYPE } from '@/const/index'
 
 const message_data = ref<SESSION_DATA_TYPE[]>([])
 
