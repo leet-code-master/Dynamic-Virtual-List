@@ -16,6 +16,7 @@
 <script setup lang="ts">
 import { computed, defineComponent, ref, toRefs } from 'vue'
 import type { OptionsNode } from '@/types'
+import { nextTick } from 'process'
 const props = withDefaults(
   defineProps<{
     itemHeight?: number
@@ -61,6 +62,7 @@ const renderData = computed<OptionsNode[]>(() => {
   const realEnd = Math.min(end.value + pageItemCount.value, allData.value.length)
   return allData.value.slice(realStart, realEnd)
 })
+// console.log(renderData.value, '====')
 /**
  * 滚动容器. 支持显示滚动条的容器。确定虚拟列表的可视区高度
  */
@@ -69,7 +71,8 @@ const scrollerContainerRef = ref<HTMLDivElement>()
  * 滚动容器高度。采用计算属性方式动态获取滚动容器高度
  */
 const scrollerContainerRefHeight = computed(() => {
-  return scrollerContainerRef.value ? scrollerContainerRef.value.offsetHeight : 0
+  return 200
+  // return scrollerContainerRef.value ? scrollerContainerRef.value.offsetHeight : 200
 })
 /**
  * 视口可显示的元素数量： 滚动容器高度/每一项的高度，然后对结果进行向上取整，然后再+1
@@ -127,22 +130,11 @@ export default defineComponent({
     z-index: -1;
   }
   .content-list {
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    // .item {
-    //   height: calc(v-bind(itemHeight) * 1px);
-    //   line-height: calc(v-bind(itemHeight) * 1px);
-    //   border-bottom: 1px solid #ddd;
-    //   width: 100%;
-    //   box-sizing: border-box;
-    //   padding: 0 12px;
-    //   cursor: pointer;
-    //   &:last-child {
-    //     border-bottom: none;
-    //   }
-    // }
   }
 }
 </style>

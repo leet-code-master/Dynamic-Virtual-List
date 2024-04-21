@@ -92,10 +92,8 @@ function handleNodeClick(node: OptionsNode) {
       cascaderOptions.value = removeEmpty(cascaderOptions.value)
     }
   } else {
-    // console.log(node.checked)
     node.checked = !node.checked
     const result = extractCheckedValues(cascaderOptions.value[0])
-    console.log(result)
     emit('update:modelValue', result)
   }
 }
@@ -123,20 +121,23 @@ export default defineComponent({
 </script>
 <style scoped lang="scss">
 .cascader-box {
-  border: 1px solid #ddd;
+  // border: 1px solid #ddd;
   width: fit-content;
+  height: inherit;
   .cascader-panel-wrapper {
     display: flex;
+    height: inherit;
     .cascader-panel {
+      // height: inherit;
       height: 200px;
-      width: 180px;
-      margin: 4px;
-      display: block;
+      min-width: 200px;
+      // margin: 4px;
       // .cascader-panel-title {
       //   border-bottom: 1px solid #ddd;
       //   height: 32px;
       // }
       .cascader-list {
+        height: 100%;
         .item-label-wrapper {
           line-height: 32px;
           font-size: 14px;
